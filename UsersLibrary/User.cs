@@ -23,12 +23,7 @@ namespace UsersLibrary
         public string MiddleName
         {
             get => _middleName;
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    throw new Exception("Middle name cannot be empty.");
-                _middleName = value;
-            }
+            set => _middleName = value;
         }
 
         public string LastName
