@@ -16,7 +16,7 @@ namespace ShapesLibrary
             }
         }
 
-        public double LengthCircumcircle => 2 * Math.PI * Radius;
+        public double LengthСircumference => 2 * Math.PI * Radius;
         public virtual double Area => Math.PI * Math.Pow(Radius, 2);
 
         public Round(Point center, double radius)
@@ -27,7 +27,7 @@ namespace ShapesLibrary
 
         public override string ToString()
         {
-            return string.Format("Coordinate of the center {0}, radius {1}", Center, Radius);
+            return string.Format("Round. Coordinate of the center {0}, radius {1}", Center, Radius);
         }
     }
 }

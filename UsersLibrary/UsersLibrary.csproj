@@ -44,5 +44,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShapesLibrary\ShapesLibrary.csproj">
+      <Project>{35eac56e-8d31-4cb1-b397-876c2a17f8ab}</Project>
+      <Name>ShapesLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

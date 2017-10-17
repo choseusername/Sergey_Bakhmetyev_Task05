@@ -4,7 +4,7 @@ namespace UsersLibrary
 {
     public class User
     {
-        private string _firstName,
+        string _firstName,
                        _middleName,
                        _lastName;
         DateTime _birthDate;

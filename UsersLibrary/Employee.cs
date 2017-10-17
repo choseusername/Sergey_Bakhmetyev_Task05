@@ -1,28 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UsersLibrary
 {
-    /*
-   * Задание 1
-На основе класса User (см. задание 1 из предыдущей темы), создать класс Employee, описывающий сотрудника фирмы.
-В дополнение к полям пользователя добавить свойства «стаж работы» и «должность».
-Обеспечить нахождение класса в заведомо корректном состоянии.  Подумать над новыми свойствами с точки зрения использования этого класса в будущем.
-*/
     public class Employee: User
     {
-        public Employee(string lastName, string firstName, string middleName, DateTime birthDate):
-            base(lastName, firstName, middleName, birthDate)
+        string _position;
+        TimeSpan _workExperience;
+
+        public virtual TimeSpan WorkExperience
         {
+            get => _workExperience;
+            set
+            {
+                if (value < TimeSpan.Zero)
+                    throw new Exception("Work experience can not be less than 0.");
+                _workExperience = value;
+            }
+        }
+        
+        public string Position
+        {
+            get => _position;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new Exception("Position name cannot be empty.");
+                _position = value;
+            }
         }
 
-        Employee(string lastName, string firstName, DateTime birthDate):
+        public Employee(string lastName, string firstName, string middleName, DateTime birthDate, TimeSpan workExperience, string position) :
+            this(lastName, firstName, birthDate, workExperience, position)
+        { }
+
+        public Employee(string lastName, string firstName, DateTime birthDate, TimeSpan workExperience, string position) :
             base(lastName, firstName, birthDate)
         {
+            WorkExperience = workExperience;
+            Position = position;
+        }
 
+        public override string ToString()
+        {
+            return string.Format("Фамилия: {0}\nИмя: {1}\nОтчество: {2}\nДата рождения: {3}\nВозраст: {4}\n" +
+                "Стаж работы: {5}\nДолжность: {6}\n",
+                LastName, FirstName, MiddleName, BirthDate.ToLongDateString(), Age,
+                WorkExperience.ToString("%d") + " days", Position);
         }
     }
 }
